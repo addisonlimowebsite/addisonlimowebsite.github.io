@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Limo Service</title>
     <style>
+	
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -371,8 +372,67 @@
 		}
 	
     </style>
-	
 
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel');
+    const interval = 3000; // 6 seconds
+    const carouselsData = []; // Store data for each carousel
+
+    carousels.forEach((carousel, index) => {
+        const images = carousel.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+        let currentIndex = 0;
+        let hoverState = false;
+
+        const updateCarousel = () => {
+            if (!hoverState) {
+                currentIndex = (currentIndex + 1) % totalImages;
+                const translateX = -currentIndex * carousel.offsetWidth;
+                images.style.transform = `translateX(${translateX}px)`;
+            }
+        };
+
+        // Store each carousel's interval and hover state
+        const data = {
+            intervalId: setInterval(updateCarousel, interval),
+            setHover: (state) => (hoverState = state),
+        };
+
+        carouselsData.push(data);
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => {
+            data.setHover(true);
+        });
+
+        // Resume on mouse leave
+        carousel.addEventListener('mouseleave', () => {
+            data.setHover(false);
+        });
+
+        // Manual navigation
+        carousel.querySelector('.prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            const translateX = -currentIndex * carousel.offsetWidth;
+            images.style.transform = `translateX(${translateX}px)`;
+        });
+
+        carousel.querySelector('.next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const translateX = -currentIndex * carousel.offsetWidth;
+            images.style.transform = `translateX(${translateX}px)`;
+        });
+    });
+
+    // Cleanup intervals when navigating away from the page
+    window.addEventListener('beforeunload', () => {
+        carouselsData.forEach((data) => clearInterval(data.intervalId));
+    });
+});
+
+
+</script>
 </head>
 
 
@@ -392,126 +452,153 @@
 		</header>
 
 		<nav>
-			<a href="#hero" class="home">Home</a>
+			<a href="index.html" class="home">Home</a>
 			<a href="#services" class="services">Services</a>
-			<a href="#fleet" class="fleet">Fleet</a>
 			<a href="#rates" class="rates">Rates</a>
 			<a href="#testimonials" class="testimonials">Testimonials</a>
 			<a href="#contact" class="contact">Contact</a>
 		</nav>
 
-		<section id="hero">
-			<background-image: homebackground.jpeg>
-			
-			<div class="hero-text">
-				<h1>Arrive in Style</h1>
-				<p>Experience luxury, comfort, and elegance with our premium limo services.</p>
-				<button class="btn">Book Now</button>
-			</div>
-
-		</section>
-
-		<section id="services">
-			<h2>Our Services</h2>
-			<div class="service">
-				<h3>Chauffeur Car Service</h3>
-				<p>Experience the finest executive car services in Dallas, TX, tailored for both leisure and business travelers.</p>
-			</div>
-			<div class="service">
-				<h3>Airport Transportation</h3>
-				<p>Reliable rides to DFW & Love Field airports, ensuring timely arrivals and departures.</p>
-			</div>
-			<div class="service">
-				<h3>Group Transportation</h3>
-				<p>Luxury group transportation options, including sedans, SUVs, Mercedes Sprinter limos, mini buses, and coach buses.</p>
-			</div>
-			<div class="service">
-				<h3>Special Events</h3>
-				<p>Elegant transportation solutions for weddings, proms, and other special occasions.</p>
-			</div>
-		</section>
-
 
 
 		<section id="fleet">
 			<h2>Our Fleet</h2>
-			<p>
-				<strong><a href="fleet.html" style="color: #e74c3c; text-decoration: underline; font-size: 1.2rem;">
-				Click here to explore all our luxurious vehicles in detail!</a></strong>
-			</p>
-			<p>Discover the perfect vehicle for your needs. Tap on any vehicle below to learn more:</p>
-			<div class="fleet-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; padding: 1rem;">
+			<p>Explore our luxurious fleet designed to provide comfort and style for every occasion.</p>
+			<div class="fleet-container">
 				<!-- H2 Hummer Limo -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="h2limo1.webp" alt="H2 Hummer Limo" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">H2 Hummer Limo</h3>
-						<p>Seats 14-18</p>
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="h2limo1.webp" alt="H2 Hummer Limo 1">
+							<img src="h2limo2.webp" alt="H2 Hummer Limo 2">
+							<img src="h2limo3.webp" alt="H2 Hummer Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
 					</div>
-				</a>
+					<h3>H2 Hummer Limo</h3>
+					<p>This bold and stylish limo offers the perfect ride for larger groups looking to make an impression.</p>
+					<ul>
+						<li>Luxury Seats</li>
+						<li>Strobe Lighted Ceiling</li>
+						<li>Optic & LED Lighting</li>
+						<li>Accommodates 14-18 Passengers</li>
+					</ul>
+				</div>
+
 				<!-- Mercedes Sprinter Limo -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="mercedessprinter1.webp" alt="Mercedes Sprinter Limo" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">Mercedes Sprinter Limo</h3>
-						<p>Seats 12-14</p>
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="mercedessprinter1.webp" alt="Mercedes Sprinter Limo 1">
+							<img src="mercedessprinter2.webp" alt="Mercedes Sprinter Limo 2">
+							<img src="mercedessprinter3.webp" alt="Mercedes Sprinter Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
 					</div>
-				</a>
+					<h3>Mercedes Sprinter Limo</h3>
+					<p>Modern elegance and cutting-edge technology meet to create an unforgettable group experience.</p>
+					<ul>
+						<li>Dual Diamond J Seats</li>
+						<li>Steel Mirrored Ceiling</li>
+						<li>RGB Lighted Floor</li>
+					</ul>
+				</div>
+
 				<!-- Luxury Black Stretch Limo -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="luxuryblack1.webp" alt="Luxury Black Stretch Limo" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">Luxury Black Stretch Limo</h3>
-						<p>Seats 8-10</p>
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="luxuryStretch1.webp" alt="Luxury Black Stretch Limo 1">
+							<img src="luxuryStretch2.webp" alt="Luxury Black Stretch Limo 2">
+							<img src="luxuryStretch3.webp" alt="Luxury Black Stretch Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
 					</div>
-				</a>
-				<!-- Mercedes Executive -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="mercedesSprinterExecutive1.webp" alt="Mercedes Executive" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">Mercedes Executive</h3>
-						<p>Seats 20+</p>
-					</div>
-				</a>
-				<!-- Lincoln Navigator -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="lincolnnav1.webp" alt="Lincoln Navigator" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">Lincoln Navigator</h3>
-						<p>Seats 8</p>
-					</div>
-				</a>
+					<h3>Luxury Black Stretch Limo</h3>
+					<p>Perfect for intimate events, this limo exudes sophistication and class.</p>
+					<ul>
+						<li>J-Seating Luxury Seats</li>
+						<li>Strobe Lighted Ceiling</li>
+						<li>Optic & LED Lighting</li>
+					</ul>
+				</div>
 				
-				<!-- Mercedes Sprinter Van -->
-				<a href="fleet.html" style="text-decoration: none; color: inherit;">
-					<div class="fleet-item" style="text-align: center; font-size: 0.9rem; padding: 1rem; background: #fff; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-						<img src="mercedessprinter1.webp" alt="Mercedes Sprinter Van" style="width: 100%; height: auto; border-radius: 5px;">
-						<h3 style="margin: 0.5rem 0; font-size: 1rem;">Mercedes Sprinter Van</h3>
-						<p>Seats 4</p>
+				<!-- Mercedes Executive -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="mercedesSprinterExecutive1.webp" alt="Executive 1">
+							<img src="mercedesSprinterExecutive2.webp" alt="Executive 2">
+							<img src="mercedesSprinterExecutive3.webp" alt="Executive 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
 					</div>
-				</a>
+					<h3>Mercedes Executive Sprinter</h3>
+					<p>The ultimate party on wheels, perfect for celebrations and large groups.</p>
+					<ul>
+						<li>Custom Lighting</li>
+						<li>Onboard Bar</li>
+						<li>Seating for 20+</li>
+					</ul>
+				</div>
+
+				<!-- Lincoln Navigator -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="lincolnnav1.webp" alt="Lincoln Navigator 1">
+							<img src="lincolnnav2.webp" alt="Lincoln Navigator 2">
+							<img src="lincolnnav3.webp" alt="Lincoln Navigator 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Lincoln Navigator</h3>
+					<p>A spacious and luxurious SUV, ideal for small group transportation.</p>
+					<ul>
+						<li>Accommodates 8 Passengers</li>
+						<li>Leather Seating</li>
+					</ul>
+				</div>
+
+				
+
+				<!-- Mercedes Sprinter Van -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="mercedessprinter1.webp" alt="Sprinter Sedan 1">
+							<img src="mercedessprinter2.webp" alt="Sprinter Sedan 2">
+							<img src="mercedessprinter3.webp" alt="Sprinter Sedan 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Sprinter Van</h3>
+					<p>A sleek and stylish option for individual or small group travel.</p>
+					<ul>
+						<li>Comfortable Leather Seats</li>
+						<li>Climate Control</li>
+					</ul>
+				</div>
 			</div>
 		</section>
-
-	<section id="testimonials">
-		<h2>What Our Clients Say</h2>
-		<p>"The best limo service I've ever used!" - John D.</p>
-		<p>"Exceptional service and beautiful cars!" - Sarah M.</p>
-	</section>
 
 	<section id="contact">
 		<h2>Contact Us</h2>
 		<p>Phone: (123) 456-7890</p>
-		<p>Email: info@luxurylimo.com</p>
+		<p>Email: xxx</p>
 		<button class="btn">Get a Quote</button>
 	</section>
 
 
 	<footer>
-		<p>&copy; 2024 Luxury Limo Service. All rights reserved.</p>
+		<p>&copy; 2024 Addison Express. All rights reserved.</p>
 	</footer>
-	
-<script>
 
 </body>
 </html>

@@ -372,6 +372,74 @@
 		}
 	
     </style>
+	
+	    <style>
+        .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above everything */
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px white;
+}
+
+.modal .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10000; /* Ensure it's above everything */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+		/* Hide arrows when modal is open */
+		body.modal-open .carousel .prev,
+		body.modal-open .carousel .next {
+			display: none;
+		}
+
+
+        /* Carousel styles (unchanged for brevity) */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%; /* Full width of the parent container */
+            height: 200px; /* Matches the height of the images */
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%; /* Ensures the images align properly */
+        }
+
+        .carousel-images img {
+            width: 100%; /* Ensures each image takes the full carousel width */
+            flex-shrink: 0;
+            height: 200px;
+            object-fit: cover; /* Maintains aspect ratio and fills the space */
+            cursor: pointer; /* Indicate that images are clickable */
+        }
+    </style>
+	
+	
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
@@ -433,6 +501,37 @@
 
 
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.querySelector('#image-modal');
+    const modalImage = modal.querySelector('#modal-image');
+    const closeButton = modal.querySelector('.close-btn');
+    const images = document.querySelectorAll('.carousel-images img');
+
+    // Open modal when an image is clicked
+    images.forEach(image => {
+        image.addEventListener('click', () => {
+            modalImage.src = image.src; // Set modal image source
+            modal.style.display = 'flex'; // Show modal
+        });
+    });
+
+    // Close modal when the close button is clicked
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none'; // Hide modal
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none'; // Hide modal
+        }
+    });
+});
+		
+</script>
+
 </head>
 
 
@@ -459,8 +558,14 @@
 			<a href="#contact" class="contact">Contact</a>
 		</nav>
 
-
-
+		<!-- Modal -->
+		<div class="modal" id="image-modal">
+			<button class="close-btn">&times;</button>
+			<img src="" alt="Full Size" id="modal-image">
+		</div>
+		
+	
+	
 		<section id="fleet">
 			<h2>Our Fleet</h2>
 			<p>Explore our luxurious fleet designed to provide comfort and style for every occasion.</p>
@@ -599,6 +704,6 @@
 	<footer>
 		<p>&copy; 2024 Addison Express. All rights reserved.</p>
 	</footer>
-
+	
 </body>
 </html>

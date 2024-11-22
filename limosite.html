@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Limo Service</title>
+    <style>
+	
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+		
+        
+.call-button {
+    background-color: #e74c3c; /* Red background */
+    color: white; /* White text for the number */
+    padding: 0.5rem 1rem; /* Padding for a rounded rectangle */
+    text-decoration: none; /* Remove underline */
+    border-radius: 25px; /* Rounded edges */
+    font-size: 1rem; /* Text size */
+    font-weight: bold; /* Make the text stand out */
+    display: flex; /* Align icon and text */
+    align-items: center; /* Center items vertically */
+    gap: 0.5rem; /* Space between the icon and text */
+    justify-content: center;
+    margin-left: auto; /* Push the button to the far right */
+}
+
+.call-button span {
+    color: white !important; /* Force white color for the phone icon */
+    font-size: 1.2rem; /* Slightly larger for better visibility */
+}
+
+.call-button:hover {
+    background-color: #c0392b; /* Slightly darker red on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+		header {
+			display: flex;
+			align-items: center; /* Vertically align items */
+			justify-content: space-between; /* Space items evenly */
+			padding: 1rem 2rem;
+			background-color: #333;
+			color: white;
+			min-height: 6rem; /* Set minimum header height */
+			gap: 1rem;
+		}
+
+		header img {
+			height: 4.5rem; /* Increase the logo size */
+			width: auto; /* Maintain aspect ratio */
+			object-fit: contain;
+		}
+
+		header h1 {
+			font-size: 2rem; /* Adjust font size for better balance */
+			margin: 0;
+			flex-grow: 1; /* Allow the text to grow and take available space */
+			text-align: left; /* Align text to the left */
+		}
+
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #444;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+        nav a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+		
+        #hero {
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            background: url('homebackground-ultrawide.jpg') no-repeat center center/cover;
+        }
+		
+        #hero h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .btn {
+            background: #f90;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #e80;
+        }
+        #services, #fleet, #testimonials, #contact {
+            background: #f9f9f9;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+		
+		#fleet {
+			padding: 2rem;
+			background-color: #f9f9f9;
+			text-align: center;
+		}
+
+		.fleet-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 1.5rem;
+			padding: 1rem;
+		}
+
+		.fleet-item {
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			text-align: left;
+			transition: transform 0.3s;
+		}
+
+		.fleet-item:hover {
+			transform: translateY(-10px);
+		}
+
+		.fleet-item img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		.fleet-item h3 {
+			margin: 0;
+			padding: 1rem;
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+		}
+
+		.fleet-item p {
+			padding: 0 1rem;
+			font-size: 0.9rem;
+			color: #555;
+		}
+
+		.fleet-item ul {
+			list-style: disc;
+			padding: 0 1.5rem 1.5rem 1.5rem;
+			margin: 0;
+			font-size: 0.9rem;
+			color: #333;
+		}
+
+		.fleet-item ul li {
+			margin-bottom: 0.5rem;
+		}
+
+		@media (max-width: 768px) {
+			.fleet-container {
+				grid-template-columns: 1fr;
+			}
+		}
+		
+		.carousel {
+			position: relative;
+			overflow: hidden;
+			width: 100%; /* Full width of the parent container */
+			height: 200px; /* Matches the height of the images */
+		}
+
+		.carousel-images {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			width: 100%; /* Ensures the images align properly */
+		}
+
+		.carousel-images img {
+			width: 100%; /* Ensures each image takes the full carousel width */
+			flex-shrink: 0;
+			height: 200px;
+			object-fit: cover; /* Maintains aspect ratio and fills the space */
+		}
+
+		.prev, .next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: rgba(0, 0, 0, 0.5);
+			color: white;
+			border: none;
+			padding: 0.5rem;
+			cursor: pointer;
+			z-index: 1000;
+		}
+
+		.prev {
+			left: 0;
+		}
+
+		.next {
+			right: 0;
+		}
+		
+		.service {
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			padding: 1rem;
+			margin-bottom: 1rem;
+			text-align: left;
+		}
+
+		.service h3 {
+			margin-top: 0;
+			color: #333;
+		}
+
+		.service p {
+			color: #555;
+		}
+		
+		        @media (max-width: 768px) {
+            #hero {
+                background: url('homebackground-portrait.jpeg') no-repeat center center/cover;
+            }
+
+            .fleet-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero {
+                background: url('homebackground-mobile.jpeg') no-repeat center center/cover;
+            }
+        }
+		
+		@media (max-width: 1080px) {
+            #hero {
+                background: url('homebackground-landscape.jpeg') no-repeat center center/cover;
+            }
+		
+    </style>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel');
+
+    carousels.forEach((carousel) => {
+        const images = carousel.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+        let currentIndex = 0;
+        let lastTimestamp = Date.now();
+        const interval = 6000; // 6 seconds
+        let hoverState = false;
+
+        const cycleImages = () => {
+            const now = Date.now();
+            if (!hoverState && now - lastTimestamp >= interval) {
+                currentIndex = (currentIndex + 1) % totalImages;
+                const translateX = -currentIndex * carousel.offsetWidth; // Translate by the width of the carousel container
+                images.style.transform = `translateX(${translateX}px)`;
+                lastTimestamp = now; // Update the timestamp
+            }
+            requestAnimationFrame(cycleImages);
+        };
+
+        // Start the animation loop
+        requestAnimationFrame(cycleImages);
+
+        // Pause on hover and resume on mouse leave
+        carousel.addEventListener('mouseenter', () => {
+            hoverState = true;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            hoverState = false;
+            // Adjust timestamp to keep sync
+            lastTimestamp = Date.now() - (Date.now() % interval);
+        });
+
+        // Add manual navigation with sync reset
+        carousel.querySelector('.prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            const translateX = -currentIndex * carousel.offsetWidth;
+            images.style.transform = `translateX(${translateX}px)`;
+            lastTimestamp = Date.now();
+        });
+
+        carousel.querySelector('.next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const translateX = -currentIndex * carousel.offsetWidth;
+            images.style.transform = `translateX(${translateX}px)`;
+            lastTimestamp = Date.now();
+        });
+    });
+});
+
+
+	</script>
+</head>
+
+
+<body>
+
+		<header>
+			<img src="logo.webp" alt="Company Logo">
+			<h1>Addison Xpress Car & Limo Service</h1>
+			<a href="tel:+19726407128" class="call-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="1.2rem" height="1.2rem">
+					<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z"/>
+				</svg>
+				(972) 640 7128
+			</a>
+		</header>
+
+		<nav>
+			<a href="#hero">Home</a>
+			<a href="#services">Services</a>
+			<a href="#fleet">Fleet</a>
+			<a href="#testimonials">Testimonials</a>
+			<a href="#contact">Contact</a>
+		</nav>
+
+		<section id="hero">
+			<background-image: homebackground.jpeg>
+			<h1>Arrive in Style</h1>
+			<p>Experience luxury, comfort, and elegance with our premium limo services.</p>
+			<button class="btn">Book Now</button>
+		</section>
+
+		<section id="services">
+			<h2>Our Services</h2>
+			<div class="service">
+				<h3>Chauffeur Car Service</h3>
+				<p>Experience the finest executive car services in Dallas, TX, tailored for both leisure and business travelers.</p>
+			</div>
+			<div class="service">
+				<h3>Airport Transportation</h3>
+				<p>Reliable rides to DFW & Love Field airports, ensuring timely arrivals and departures.</p>
+			</div>
+			<div class="service">
+				<h3>Group Transportation</h3>
+				<p>Luxury group transportation options, including sedans, SUVs, Mercedes Sprinter limos, mini buses, and coach buses.</p>
+			</div>
+			<div class="service">
+				<h3>Special Events</h3>
+				<p>Elegant transportation solutions for weddings, proms, and other special occasions.</p>
+			</div>
+		</section>
+
+
+
+		<section id="fleet">
+			<h2>Our Fleet</h2>
+			<p>Explore our luxurious fleet designed to provide comfort and style for every occasion.</p>
+			<div class="fleet-container">
+				<!-- H2 Hummer Limo -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="h2limo1.webp" alt="H2 Hummer Limo 1">
+							<img src="h2limo2.webp" alt="H2 Hummer Limo 2">
+							<img src="h2limo3.webp" alt="H2 Hummer Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>H2 Hummer Limo</h3>
+					<p>This bold and stylish limo offers the perfect ride for larger groups looking to make an impression.</p>
+					<ul>
+						<li>Luxury Seats</li>
+						<li>Strobe Lighted Ceiling</li>
+						<li>Optic & LED Lighting</li>
+						<li>Accommodates 14-18 Passengers</li>
+					</ul>
+				</div>
+
+				<!-- Mercedes Sprinter Limo -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="mercedesvan1.webp" alt="Mercedes Sprinter Limo 1">
+							<img src="mercedesvan2.webp" alt="Mercedes Sprinter Limo 2">
+							<img src="mercedesvan3.webp" alt="Mercedes Sprinter Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Mercedes Sprinter Limo</h3>
+					<p>Modern elegance and cutting-edge technology meet to create an unforgettable group experience.</p>
+					<ul>
+						<li>Dual Diamond J Seats</li>
+						<li>Steel Mirrored Ceiling</li>
+						<li>RGB Lighted Floor</li>
+					</ul>
+				</div>
+
+				<!-- Luxury Black Stretch Limo -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="blackstretch1.webp" alt="Luxury Black Stretch Limo 1">
+							<img src="blackstretch2.webp" alt="Luxury Black Stretch Limo 2">
+							<img src="blackstretch3.webp" alt="Luxury Black Stretch Limo 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Luxury Black Stretch Limo</h3>
+					<p>Perfect for intimate events, this limo exudes sophistication and class.</p>
+					<ul>
+						<li>J-Seating Luxury Seats</li>
+						<li>Strobe Lighted Ceiling</li>
+						<li>Optic & LED Lighting</li>
+					</ul>
+				</div>
+
+				<!-- Lincoln Navigator -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="lincolnnav1.webp" alt="Lincoln Navigator 1">
+							<img src="lincolnnav2.webp" alt="Lincoln Navigator 2">
+							<img src="lincolnnav3.webp" alt="Lincoln Navigator 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Lincoln Navigator</h3>
+					<p>A spacious and luxurious SUV, ideal for small group transportation.</p>
+					<ul>
+						<li>Accommodates 8 Passengers</li>
+						<li>Leather Seating</li>
+					</ul>
+				</div>
+
+				<!-- Party Bus -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="partybus1.webp" alt="Party Bus 1">
+							<img src="partybus2.webp" alt="Party Bus 2">
+							<img src="partybus3.webp" alt="Party Bus 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Party Bus</h3>
+					<p>The ultimate party on wheels, perfect for celebrations and large groups.</p>
+					<ul>
+						<li>Custom Lighting</li>
+						<li>Onboard Bar</li>
+						<li>Seating for 20+</li>
+					</ul>
+				</div>
+
+				<!-- Executive Sedan -->
+				<div class="fleet-item">
+					<div class="carousel">
+						<div class="carousel-images">
+							<img src="executivesedan1.webp" alt="Executive Sedan 1">
+							<img src="executivesedan2.webp" alt="Executive Sedan 2">
+							<img src="executivesedan3.webp" alt="Executive Sedan 3">
+						</div>
+						<button class="prev" onclick="prevSlide(this)">&#10094;</button>
+						<button class="next" onclick="nextSlide(this)">&#10095;</button>
+					</div>
+					<h3>Executive Sedan</h3>
+					<p>A sleek and stylish option for individual or small group travel.</p>
+					<ul>
+						<li>Comfortable Leather Seats</li>
+						<li>Climate Control</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+	<section id="testimonials">
+		<h2>What Our Clients Say</h2>
+		<p>"The best limo service I've ever used!" - John D.</p>
+		<p>"Exceptional service and beautiful cars!" - Sarah M.</p>
+	</section>
+
+	<section id="contact">
+		<h2>Contact Us</h2>
+		<p>Phone: (123) 456-7890</p>
+		<p>Email: info@luxurylimo.com</p>
+		<button class="btn">Get a Quote</button>
+	</section>
+
+
+	<footer>
+		<p>&copy; 2024 Luxury Limo Service. All rights reserved.</p>
+	</footer>
+
+</body>
+</html>

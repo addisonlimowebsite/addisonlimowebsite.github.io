@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Addison Limo Services</title>
   <style>
     body {
@@ -23,6 +24,11 @@
       box-sizing: border-box; /* Include padding and borders in width calculations */
     }
 
+	.wrapper {
+	  overflow-x: hidden;
+	  position: relative;
+	  /* Other wrapper-specific styles */
+	}
     header {
       display: flex;
       justify-content: space-between;
@@ -353,6 +359,7 @@
 </head>
 
 <body>
+	<div class="wrapper">
   <header>
     <div class="header-left">
       <img src="logo.webp" alt="logo" class="header-logo">
@@ -454,7 +461,7 @@
 		</a>
 	  </div>
 	</section>
-
+	</div> /* wrapper */
   <footer>
     <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
   </footer>

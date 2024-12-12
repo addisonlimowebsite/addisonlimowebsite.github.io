@@ -239,6 +239,13 @@
       padding: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
+	
+	.fleet-container-wrapper {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  padding: 0 20px; /* Adjust as needed */
+	}
 
     .fleet-item {
       background-color: gray;
@@ -418,28 +425,30 @@
     <h2>Our Fleet</h2>
     <p>Discover our luxurious fleet, crafted to deliver comfort, style, and elegance for any occasion.</p>
     <p>Click on any vehicle below to learn more and request a personalized quote!</p>
-    <div class="fleet-container">
-      <a href="/fleetMobile.html#lincoln" class="fleet-item">
-        <img src="lincoln.png" alt="Lincoln">
-        <h3>Lincoln</h3>
-        <p>Seats up to 4 passengers</p>
-      </a>
-      <a href="/fleetMobile.html#hummer" class="fleet-item">
-        <img src="hummer.png" alt="Hummer H2">
-        <h3>Hummer H2</h3>
-        <p>Seats up to 14 passengers</p>
-      </a>
-      <a href="/fleetMobile.html#hummer" class="fleet-item">
-        <img src="hummer_edge.png" alt="Hummer H2">
-        <h3>Hummer H2</h3>
-        <p>Seats up to 14 passengers</p>
-      </a>
-      <a href="/fleetMobile.html#lincoln" class="fleet-item">
-        <img src="lincoln_edge.png" alt="Lincoln">
-        <h3>Lincoln</h3>
-        <p>Seats up to 4 passengers</p>
-      </a>
-    </div>
+    <div class="fleet-container-wrapper">
+		<div class="fleet-container">
+		  <a href="/fleetMobile.html#lincoln" class="fleet-item">
+			<img src="lincoln.png" alt="Lincoln">
+			<h3>Lincoln</h3>
+			<p>Seats up to 4 passengers</p>
+		  </a>
+		  <a href="/fleetMobile.html#hummer" class="fleet-item">
+			<img src="hummer.png" alt="Hummer H2">
+			<h3>Hummer H2</h3>
+			<p>Seats up to 14 passengers</p>
+		  </a>
+		  <a href="/fleetMobile.html#hummer" class="fleet-item">
+			<img src="hummer_edge.png" alt="Hummer H2">
+			<h3>Hummer H2</h3>
+			<p>Seats up to 14 passengers</p>
+		  </a>
+		  <a href="/fleetMobile.html#lincoln" class="fleet-item">
+			<img src="lincoln_edge.png" alt="Lincoln">
+			<h3>Lincoln</h3>
+			<p>Seats up to 4 passengers</p>
+		  </a>
+		</div>
+	</div>
   </section>
 
 	  <section id="service-area">

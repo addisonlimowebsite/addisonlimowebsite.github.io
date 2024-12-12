@@ -30,7 +30,25 @@
       z-index: 900;
     }
 	
-	.hamburger {
+	.header-left {
+	  flex: 1;
+	  display: flex;
+	  align-items: center; /* Vertically align logo */
+	}
+	
+	.header-right {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: flex-end;
+	}
+	
+    .header-logo {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .hamburger {
     cursor: pointer;
     font-size: 24px;
     width: 48px;

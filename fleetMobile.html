@@ -32,57 +32,56 @@
       top: 0;
       z-index: 900;
     }
-
-    .header-logo {
-      height: 100%;
-      max-height: 60px;
-      object-fit: contain;
-    }
 	
 	.header-left {
-	  flex: 1;
-	  display: flex;
-	  align-items: center; /* Vertically align logo */
-	}
-	
+		  flex: 1;
+		  display: flex;
+		  align-items: center; /* Vertically align logo */
+		}
+		
 	.header-right {
 	  display: flex;
 	  flex-direction: column;
 	  align-items: flex-end;
 	}
 	
+    .header-logo {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
 
     .hamburger {
-    cursor: pointer;
-    font-size: 24px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
+		cursor: pointer;
+		font-size: 24px;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+	  }
 
-  .hamburger span {
-    display: block;
-    width: 48px;
-    height: 6px;
-    background-color: white;
-    transition: transform 0.3s, opacity 0.3s;
-  }
+	  .hamburger span {
+		display: block;
+		width: 48px;
+		height: 6px;
+		background-color: white;
+		transition: transform 0.3s, opacity 0.3s;
+	  }
 
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(18px) rotate(45deg);
-  }
+	  .hamburger.active span:nth-child(1) {
+		transform: translateY(18px) rotate(45deg);
+	  }
 
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
+	  .hamburger.active span:nth-child(2) {
+		opacity: 0;
+	  }
 
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-18px) rotate(-45deg);
-  }
+	  .hamburger.active span:nth-child(3) {
+		transform: translateY(-18px) rotate(-45deg);
+	  }
 
     .call-button {
       background-color: #e74c3c;
@@ -245,25 +244,28 @@
 	
 	
   <header>
-    <div class="header-left">
-      <img src="logo.webp" alt="logo" class="header-logo">
-    </div>
-    <div class="header-right">
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <a href="tel:+19726407128" class="call-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
-          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z"/>
-        </svg>
-        (972) 640 7128
-      </a>
-    </div>
-  </header>
-
-  <nav class="menu">
+	
+		<div class="header-left">
+		  <img src="logo.webp" alt="logo" class="header-logo">
+		</div>
+		
+		<div class="header-right">
+			<div class="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<a href="tel:+19726407128" class="call-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+					<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z" />
+				</svg>
+				(972) 640 7128
+			</a>
+		</div>
+		
+	</header>
+  
+	<nav class="menu">
 	  <a href="indexMobile.html">Home</a>
 	  <a href="servicesMobile.html">Services</a>
 	  <a href="fleetMobile.html">Fleet</a>

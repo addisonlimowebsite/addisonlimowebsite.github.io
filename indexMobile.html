@@ -6,12 +6,6 @@
 
   <title>Addison Limo Services</title>
   <style>
-  .wrapper {
-	  overflow-x: hidden;
-	  /* position: relative; */
-	  /* Other wrapper-specific styles */
-	}
-	
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -21,10 +15,10 @@
     }
 
     html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+  min-height: 100%; /* Ensure the page extends at least to the full viewport height */
+  margin: 0;
+  padding: 0;
+}
 
     * {
       box-sizing: border-box; /* Include padding and borders in width calculations */
@@ -368,7 +362,6 @@
 </head>
 
 <body>
-	
   <header>
     <div class="header-left">
       <img src="logo.webp" alt="logo" class="header-logo">
@@ -387,7 +380,7 @@
       </a>
     </div>
   </header>
-  <div class="wrapper">
+  
   <nav class="menu">
 	  <a href="indexMobile.html">Home</a>
 	  <a href="servicesMobile.html">Services</a>
@@ -472,7 +465,7 @@
 		</a>
 	  </div>
 	</section>
-	</div> /* 1 */
+	
   <footer>
     <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
   </footer>

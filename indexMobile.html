@@ -350,6 +350,83 @@
 	  transform: translateY(-2px);
 	  text-decoration: none;
 	}
+	
+	/* Popup styling */
+	.popup {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		width: 300px;
+		background-color: #f9f9f9;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		z-index: 10000;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.popup-content {
+		overflow-y: auto;
+		max-height: 200px; /* Limit height */
+	}
+
+	.popup ul {
+		list-style: disc;
+		margin: 0;
+		padding-left: 1.5rem;
+		font-size: 0.9rem;
+		color: #333;
+	}
+
+	.popup li {
+		margin-bottom: 0.5rem;
+	}
+
+	.popup .contact-us-btn {
+		margin-top: 1rem;
+		background-color: #007BFF;
+		color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		cursor: pointer;
+		text-align: center;
+	}
+
+	.popup .contact-us-btn:hover {
+		background-color: #0056b3;
+	}
+
+	.close-popup {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		background: none;
+		border: none;
+		font-size: 1.2rem;
+		color: #333;
+		cursor: pointer;
+	}
+
+	/* Button to reopen popup */
+	.popup-button {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		background-color: #007BFF;
+		color: white;
+		border: none;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		font-size: 1rem;
+		cursor: pointer;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		z-index: 10000;
+	}
 
 
     footer {
@@ -469,6 +546,15 @@
 	  </div>
 	</section>
 	
+	<div id="popup" class="popup">
+    <button class="close-popup">&times;</button>
+		<div class="popup-content">
+			<ul id="popup-list"></ul>
+			<button class="contact-us-btn" onclick="window.location.href='#contact';">Contact Us</button>
+		</div>
+	</div>
+	<button id="popup-button" class="popup-button" style="display: none;">Click Me</button>
+	
   <footer>
     <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
   </footer>
@@ -491,6 +577,42 @@
     document.body.addEventListener('click', closeMenu);
     menu.addEventListener('click', closeMenu);
   </script>
+  
+  <script>
+	  document.addEventListener('DOMContentLoaded', () => {
+		const popup = document.getElementById('popup');
+		const popupButton = document.getElementById('popup-button');
+		const closePopupButton = document.querySelector('.close-popup');
+		const popupList = document.getElementById('popup-list');
+
+		// Load text from a file and populate the popup list
+		fetch('popup-text.txt')
+			.then(response => response.text())
+			.then(data => {
+				const lines = data.split('\n').filter(line => line.trim() !== '');
+				lines.forEach(line => {
+					const listItem = document.createElement('li');
+					listItem.textContent = line;
+					popupList.appendChild(listItem);
+				});
+			})
+			.catch(error => {
+				console.error('Error loading popup text:', error);
+			});
+
+		// Close popup and show button
+		closePopupButton.addEventListener('click', () => {
+			popup.style.display = 'none';
+			popupButton.style.display = 'block';
+		});
+
+		// Show popup and hide button
+		popupButton.addEventListener('click', () => {
+			popup.style.display = 'flex';
+			popupButton.style.display = 'none';
+		});
+	});
+	</script>
 </body>
 </html>
 

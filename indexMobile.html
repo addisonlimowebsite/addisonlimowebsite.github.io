@@ -58,25 +58,25 @@
     .hamburger {
       cursor: pointer;
       font-size: 24px;
-      width: 48px;
-      height: 48px;
+      width: 24px;
+      height: 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 7px;
     }
 
     .hamburger span {
       display: block;
-      width: 48px;
-      height: 6px;
+      width: 35px;
+      height: 3px;
       background-color: white;
       transition: transform 0.3s, opacity 0.3s;
     }
 
     .hamburger.active span:nth-child(1) {
-      transform: translateY(18px) rotate(45deg);
+      transform: translateY(10px) rotate(45deg);
     }
 
     .hamburger.active span:nth-child(2) {
@@ -84,7 +84,7 @@
     }
 
     .hamburger.active span:nth-child(3) {
-      transform: translateY(-18px) rotate(-45deg);
+      transform: translateY(-10px) rotate(-45deg);
     }
 
     .call-button {

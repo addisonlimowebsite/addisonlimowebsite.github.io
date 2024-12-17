@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rates - Addison Limo Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #d3d3d3; /* Gray background to test transparency */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    html, body {
+	  min-height: 100%; /* Ensure the page extends at least to the full viewport height */
+	  margin: 0;
+	  padding: 0;
+	}
+
+    * {
+      box-sizing: border-box; /* Include padding and borders in width calculations */
+    }
+
+	header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+	
+    .header-left {
+		  flex: 1;
+		  display: flex;
+		  align-items: center; /* Vertically align logo */
+		}
+		
+	.header-right {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: flex-end;
+	}
+	
+    .header-logo {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 35px;
+      height: 3px;
+      background-color: white;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .call-button {
+      background-color: #e74c3c;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 10px; /* Space below hamburger */
+    }
+
+    .call-button svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .call-button:hover {
+      background-color: #c0392b;
+      cursor: pointer;
+    }
+
+    .menu {
+      position: fixed;
+      top: 60px;
+      left: 200%;
+      width: 80%;
+      height: calc(100vh - 60px);
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .menu.visible {
+      left: 20%;
+    }
+
+    .menu a {
+      text-decoration: none;
+      padding: 15px 10px;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url('placeholder-hero.jpg') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 2rem;
+      color: #444;
+    }
+
+    .rates-table {
+      width: 90%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .rates-table th, .rates-table td {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .rates-table th {
+      background-color: #444;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .rates-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .rates-table tr:hover {
+      background-color: #e0e0e0;
+      transition: background 0.3s ease;
+    }
+	
+	/* Hover Image Styles */
+    .hover-thumbnail {
+      display: none;
+      position: fixed;
+      width: 200px;
+      height: auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+	
+	.get-quote-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .get-quote-button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .rates-table th, .rates-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+	
+		<div class="header-left">
+		  <img src="logo.webp" alt="logo" class="header-logo">
+		</div>
+		
+		<div class="header-right">
+			<div class="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<a href="tel:+19726407128" class="call-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+					<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z" />
+				</svg>
+				(972) 640 7128
+			</a>
+		</div>
+		
+	</header>
+  
+	<nav class="menu">
+	  <a href="indexMobile.html">Home</a>
+	  <a href="servicesMobile.html">Services</a>
+	  <a href="fleetMobile.html">Fleet</a>
+	  <a href="testimonialsMobile.html">Testimonials</a>
+	  <a href="ratesMobile.html">Rates</a>
+	  <a href="quotesMobile.html">Quote</a>
+	</nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Our Rates</h1>
+  </section>
+
+  <!-- Intro Text -->
+  <div style="text-align: center; margin: 2rem;">
+    <p>
+      <strong>20% Service Fee Not Included in the Prices Below.</strong><br>
+	  The prices are subject to change with the time and season.<br>
+      Please call or fill out our online form to get an accurate rate from our staff.<br>
+	  <b>Ask us about our new customer discounts!</b> <br>
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+    </p>
+  </div>
+
+	<!-- Hover Thumbnail -->
+	<img id="hover-thumbnail" class="hover-thumbnail" src="" alt="Thumbnail">
+  
+    <!-- Rates Table -->
+  <table class="rates-table">
+    <thead>
+      <tr>
+        <th>Vehicle</th>
+		<th>Airport</th>
+        <th>Hourly Rate</th>
+        <th>Minimum Hours</th>
+        <th>Max Passengers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+		<td data-img="mercedessprinter1.webp">Mercedes Sprinter Limo</td>
+        <td>$350</td>
+        <td>$150</td>
+		<td>4</td>
+        <td>14-18</td>
+      </tr>
+      <tr>
+		<td data-img="h2limo1.webp">Hummer Limo</td>
+        <td>$450</td>
+        <td>$175</td>
+		<td>4</td>
+        <td>14-18</td>
+      </tr>
+      <tr>
+		<td data-img="luxuryblack1.webp">Chrysler 300 Stretch Limo</td>
+        <td>$350</td>
+        <td>$150</td>
+		<td>4</td>
+        <td>8-10</td>
+      </tr>
+      <tr>
+		<td data-img="lincolnNav1.webp">Lincoln Navigator SUV</td>
+        <td>$125</td>
+        <td>$100</td>
+		<td>3</td>
+        <td>6-8</td>
+      </tr>
+      <tr>
+		<td data-img="mercedessprinter1.webp">Mercedes Sprinter Van</td>
+        <td>$325</td>
+        <td>$150</td>
+		<td>4</td>
+        <td>14</td>
+      </tr>
+		<td data-img="mercedesSprinterExecutive1.webp">Mercedes Sprinter Executive</td>
+        <td>$325</td>
+        <td>$150</td>
+		<td>4</td>
+        <td>8</td>
+      </tr>
+    </tbody>
+  </table>
+	
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+
+    const closeMenu = () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('visible');
+    };
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('visible');
+    });
+
+    document.body.addEventListener('click', closeMenu);
+    menu.addEventListener('click', closeMenu);
+  </script>
+  
+  <script>
+    const tableCells = document.querySelectorAll('.rates-table td[data-img]');
+    const hoverThumbnail = document.getElementById('hover-thumbnail');
+
+    tableCells.forEach(cell => {
+      cell.addEventListener('mouseenter', (e) => {
+        const imgSrc = cell.getAttribute('data-img');
+        hoverThumbnail.src = imgSrc;
+        hoverThumbnail.style.display = 'block';
+      });
+
+      cell.addEventListener('mousemove', (e) => {
+        hoverThumbnail.style.top = `${e.clientY + 20}px`;
+        hoverThumbnail.style.left = `${e.clientX + 20}px`;
+      });
+
+      cell.addEventListener('mouseleave', () => {
+        hoverThumbnail.style.display = 'none';
+      });
+    });
+  </script>
+  
+  <footer>
+    <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
+  </footer>
+</body>
+</html>

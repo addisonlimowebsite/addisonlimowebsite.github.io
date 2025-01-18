@@ -147,43 +147,71 @@
     }
 
     .fleet-container {
-  display: grid;
-  gap: 1.5rem;
-  padding: 1rem;
-  justify-content: center; /* Center the grid horizontally */
-  .fleet-container {
-    grid-template-columns: 1fr; /* Single column on mobile */
-  }
-}
+	  display: grid;
+	  gap: 1.5rem;
+	  padding: 1rem;
+	  justify-content: center; /* Center the grid horizontally */
+	  .fleet-container {
+		grid-template-columns: 1fr; /* Single column on mobile */
+	  }
+	}
 
-.fleet-item {
-  background-color: #999999;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  display: flex; /* Enable flexbox for centering content */
-  flex-direction: column; /* Stack content vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-}
+	.fleet-item {
+	  background-color: #999999;
+	  border-radius: 10px;
+	  overflow: hidden;
+	  text-align: center;
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	  text-decoration: none;
+	  color: inherit;
+	  transition: transform 0.3s, box-shadow 0.3s;
+	  cursor: pointer;
+	  display: flex; /* Enable flexbox for centering content */
+	  flex-direction: column; /* Stack content vertically */
+	  align-items: center; /* Center items horizontally */
+	  justify-content: center; /* Center items vertically */
+	}
 
-.fleet-item img {
-  max-width: 90%; /* Limit image width to prevent overflow */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain;
-  background-color: #333333;
-  margin-bottom: 1rem; /* Add space between the image and the heading/button */
-}
+	.fleet-item img {
+	  max-width: 90%; /* Limit image width to prevent overflow */
+	  height: auto; /* Maintain aspect ratio */
+	  object-fit: contain;
+	  background-color: #333333;
+	  margin-bottom: 1rem; /* Add space between the image and the heading/button */
+	}
 
     .fleet-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
+	
+	
+
+	.feature-selector ul {
+	  list-style-type: none;
+	  padding: 0;
+	}
+
+	.feature-selector ul li {
+	  cursor: pointer;
+	  color: #007bff;
+	  margin: 0.5rem 0;
+	  transition: color 0.3s;
+	}
+
+	.feature-selector ul li:hover {
+	  color: #0056b3;
+	}
+
+	.feature-display {
+	  margin-top: 1rem;
+	}
+
+	.feature-display img {
+	  max-width: 100%;
+	  border-radius: 8px;
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	}
 
     
 	
@@ -289,18 +317,32 @@
   <h2>Our Fleet</h2>
   <p>Select a vehicle below to view its full gallery!</p>
   <div class="fleet-container">
-    <div class="fleet-item" onclick="openGallery(0)">
-      <img src="/images/h2limo1.webp" alt="Vehicle 1">
-      <h3>Hummer Limo</h3>
-      <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
-    </div>
-    <div class="fleet-item" onclick="openGallery(1)">
-      <img src="/images/lincolnnav1.webp" alt="Vehicle 2">
+	<div id="HummerLimo" class="fleet-item">
+	  <!-- Main Image -->
+	  <img id="Hummer-main-image" src="/images/vehicles/h2limo1.webp" alt="Hummer Limo" onclick="openGallery(0)">
+	  <h3>Hummer Limo</h3>
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'Hummer', 'car')">Hummer Limo</li>
+		  <li onclick="showFeature(event, 'Hummer', 'seating')">Luxury Leather Seating</li>
+		  <li onclick="showFeature(event, 'Hummer', 'cooler')">Large Drink Cooler Bins</li>
+		  <li onclick="showFeature(event, 'Hummer', 'ceiling')">Controllable Strobe Lighted Ceiling</li>
+		</ul>
+	  </div>
+	</div>
+	
+    <div id="LincolnNavigator" class="fleet-item" onclick="openGallery(1)">
+      <img src="/images/vehicles/lincolnnav1.webp" alt="Vehicle 2">
       <h3>Lincoln Navigator</h3>
       <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
     </div>
-    <div class="fleet-item" onclick="openGallery(2)">
-      <img src="/images/luxuryblack1.webp" alt="Vehicle 3">
+	
+    <div id="StretchLimo" class="fleet-item" onclick="openGallery(2)">
+      <img src="/images/vehicles/luxuryblack1.webp" alt="Vehicle 3">
       <h3>Luxury Black Car</h3>
       <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
     </div>
@@ -320,9 +362,12 @@
   <script src="hamburgermenu.js"></script>
   <script>
     const imageGalleries = [
-      ["/images/h2limo1.webp", "/images/h2limo2.webp", "/images/h2limo3.webp"],
-      ["/images/lincolnnav1.webp", "/images/lincolnnav2.webp", "/images/lincolnnav3.webp"],
-      ["/images/luxuryblack1.webp", "/images/luxuryblack2.webp", "/images/luxuryblack3.webp"]
+	  /* 0 Hummer */
+      ["/images/vehicles/h2limo1.webp", "/images/vehicles/h2limo2.webp", "/images/h2limo3.webp"],
+	  /* 1 LincolnNavigator */
+      ["/images/vehicles/lincolnnav1.webp", "/images/vehicles/lincolnnav2.webp", "/images/vehicles/lincolnnav3.webp"],
+	  /* 2 StretchLimo */
+      ["/images/vehicles/luxuryblack1.webp", "/images/vehicles/luxuryblack2.webp", "/images/vehicles/luxuryblack3.webp"]
     ];
 
     let startX, startY;
@@ -361,5 +406,33 @@
       }
     });
   </script>
+  
+  <script>
+  
+	  const featureImages = {
+		  Hummer: {
+			car: "/images/vehicles/h2limo1.webp",
+			seating: "/images/features/Hummer/HummerSeating.webp",
+			cooler: "/images/features/Hummer/HummerCooler.webp",
+			ceiling: "/images/features/Hummer/HummerCeiling.webp",
+		  },
+		  LincolnNavigator: {
+			car: "/images/vehicles/lincolnnav1.webp",
+		  },
+		  MercedesSprinterVan: {
+			car: "/images/vehicles/mercedessprinter3.webp",
+		  },
+		};
+
+	  function showFeature(event, vehicle, feature) {
+		  event.stopPropagation(); // Prevent gallery opening
+		  const featureImage = featureImages[vehicle]?.[feature];
+		  const mainImage = document.getElementById(`${vehicle}-main-image`);
+
+		  if (featureImage) {
+			mainImage.src = featureImage; // Replace the main image
+		  }
+	  }
+	</script>
 </body>
 </html>

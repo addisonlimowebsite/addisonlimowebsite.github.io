@@ -213,7 +213,18 @@
 	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 
-    
+    /*
+	h3 {
+	  background-color: #007baa;
+      color: white;
+	  font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	  padding: 0.5rem 1rem;
+	  }
+	*/
 	
 	.get-quote-button {
       display: inline-block;
@@ -319,9 +330,9 @@
   <div class="fleet-container">
 	<div id="HummerLimo" class="fleet-item">
 	  <!-- Main Image -->
-	  <img id="Hummer-main-image" src="/images/vehicles/h2limo1.webp" alt="Hummer Limo" onclick="openGallery(0)">
+	  <img id="Hummer-main-image" src="/images/vehicles/Hummer.webp" alt="Hummer Limo" onclick="openGallery(0)">
 	  <h3>Hummer Limo</h3>
-	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  
 
 	  <!-- Feature Selector -->
 	  <div class="feature-selector">
@@ -333,19 +344,121 @@
 		  <li onclick="showFeature(event, 'Hummer', 'ceiling')">Controllable Strobe Lighted Ceiling</li>
 		</ul>
 	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
 	</div>
 	
     <div id="LincolnNavigator" class="fleet-item" onclick="openGallery(1)">
-      <img src="/images/vehicles/lincolnnav1.webp" alt="Vehicle 2">
+      
+	  <img id="LincolnNavigator-main-image" src="/images/vehicles/LincolnNavigator.webp" alt="LincolnNavigator Limo" onclick="openGallery(1)">
       <h3>Lincoln Navigator</h3>
-      <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+      
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'LincolnNavigator', 'car')">Lincoln Navigator</li>
+		  <li onclick="showFeature(event, 'LincolnNavigator', 'seating')">REPLACE Luxury Leather Seating</li>
+		  <li onclick="showFeature(event, 'LincolnNavigator', 'cooler')">REPLACE Large Drink Cooler Bins</li>
+		  <li onclick="showFeature(event, 'LincolnNavigator', 'ceiling')">REPLACE Controllable Strobe Lighted Ceiling</li>
+		</ul>
+	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
     </div>
 	
     <div id="StretchLimo" class="fleet-item" onclick="openGallery(2)">
-      <img src="/images/vehicles/luxuryblack1.webp" alt="Vehicle 3">
+      <img id="StretchLimo-main-image" src="/images/vehicles/StretchLimo.webp" alt="Stretch Limo" onclick="openGallery(2)">
       <h3>Luxury Black Car</h3>
-      <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+      
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'StretchLimo', 'car')">Stretch Limo</li>
+		  <li onclick="showFeature(event, 'StretchLimo', 'seating')">J-Seating Luxury Leather Seating</li>
+		  <li onclick="showFeature(event, 'StretchLimo', 'cooler')">Large Drink Cooler Bins</li>
+		  <li onclick="showFeature(event, 'StretchLimo', 'ceiling')">Controllable Strobe Lighted Ceiling</li>
+		  <li onclick="showFeature(event, 'StretchLimo', 'bar')">Full Sized Bar with Optic & LED Lighting</li>
+		  <li onclick="showFeature(event, 'StretchLimo', 'speakers')">1000 Watt Surround Sound with Audio System</li>
+		</ul>
+	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
     </div>
+	
+	<div id="MercedesSprinterVan" class="fleet-item" onclick="openGallery(3)">
+	  <img id="MercedesSprinterVan-main-image" src="/images/vehicles/MercedesSprinterVan.webp" alt="Sprinter Van" onclick="openGallery(3)">
+      <h3>Mercedes Sprinter Van</h3>
+      
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'MercedesSprinterVan', 'car')">Mercedes Sprinter Van</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterVan', 'seating')">Large Luggage Area</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterVan', 'cooler')">Beverage Cooler Bins</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterVan', 'ceiling')">LED Lit Ceiling</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterVan', 'speakers')">High Performance Surround Sound & Climate Controls</li>
+		</ul>
+	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
+    </div>
+	
+	<div id="MercedesSprinterExecutive" class="fleet-item" onclick="openGallery(4)">
+	  <img id="MercedesSprinterExecutive-main-image" src="/images/vehicles/MercedesSprinterExecutive.webp" alt="Sprinter Executive" onclick="openGallery(4)">
+      <h3>Mercedes Sprinter Executive</h3>
+      
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'car')">Mercedes Sprinter Executive</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'seating')">360 Swivel & Reclining Leather Seating</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'tables')">Wood Tables & Suede Hardwood Flooring</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'tv')">110V Power Outlets & USB Power Plugs & LED HDTV</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'speakers')">High Performance Surround Sound & Climate Controls</li>
+		</ul>
+	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
+    </div>
+	
+	<div id="MercedesSprinterLimo" class="fleet-item" onclick="openGallery(5)">
+	  <img id="MercedesSprinterLimo-main-image" src="/images/vehicles/MercedesSprinterLimo.webp" alt="Sprinter Limo" onclick="openGallery(5)">
+
+      <h3>Mercedes Sprinter Limo</h3>
+      
+	  <!-- Feature Selector -->
+	  <div class="feature-selector">
+		<h4>Features</h4>
+		<ul>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'car')">Mercedes Sprinter Limo</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'seating')">Dual Full-Length J Seats with Diamond Stitching</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'ceiling')">Stainless Steel Mirrored Ceiling with RGB Lighting</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'tv')">2 Large LCD TV Monitors</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'speakers')">Mobile Theater Surround Sound System</li>
+		  <li onclick="showFeature(event, 'MercedesSprinterLimo', 'cooler')">Custom-built Large Bar Cooler & Fiber Optic light</li>
+		</ul>
+	  </div>
+	  
+	  <a href="/quotesMobile.html" class="get-quote-button">Get Quote</a>
+	  <br>
+	  
+    </div>
+	
+	
   </div>
 </section>
 
@@ -361,14 +474,19 @@
 
   <script src="hamburgermenu.js"></script>
   <script>
+	/* images to show by default (not just the features) */
     const imageGalleries = [
-	  /* 0 Hummer */
-      ["/images/vehicles/h2limo1.webp", "/images/vehicles/h2limo2.webp", "/images/h2limo3.webp"],
-	  /* 1 LincolnNavigator */
-      ["/images/vehicles/lincolnnav1.webp", "/images/vehicles/lincolnnav2.webp", "/images/vehicles/lincolnnav3.webp"],
-	  /* 2 StretchLimo */
-      ["/images/vehicles/luxuryblack1.webp", "/images/vehicles/luxuryblack2.webp", "/images/vehicles/luxuryblack3.webp"]
-    ];
+	/* 0 Hummer */
+	["/images/vehicles/Hummer.webp", "/images/vehicles/Hummer2.webp", "/images/Hummer3.webp"],
+	/* 1 LincolnNavigator */
+	["/images/vehicles/LincolnNavigator.webp", "/images/vehicles/LincolnNavigator2.webp", "/images/vehicles/LincolnNavigator3.webp"],
+	/* 2 StretchLimo */
+	["/images/vehicles/StretchLimo.webp", "/images/vehicles/StretchLimo2.webp", "/images/vehicles/StretchLimo3.webp"],
+	/* 3 Mercedes Sprinter Van */
+	["/images/vehicles/MercedesSprinterVan.webp", "/images/vehicles/MercedesSprinterVan2.webp", "/images/vehicles/MercedesSprinterVan3.webp"],
+	/* 4 Mercedes Sprinter Executive */
+	["/images/vehicles/MercedesSprinterExecutive.webp", "/images/vehicles/MercedesSprinterVan2.webp", "/images/vehicles/MercedesSprinterVan3.webp"],
+	];
 
     let startX, startY;
 
@@ -408,19 +526,35 @@
   </script>
   
   <script>
-  
+		
+		/* Features go here (the list for stuff like cars; clicked on to replace original image) */
 	  const featureImages = {
 		  Hummer: {
-			car: "/images/vehicles/h2limo1.webp",
+			car: "/images/vehicles/Hummer.webp",
 			seating: "/images/features/Hummer/HummerSeating.webp",
 			cooler: "/images/features/Hummer/HummerCooler.webp",
 			ceiling: "/images/features/Hummer/HummerCeiling.webp",
 		  },
 		  LincolnNavigator: {
-			car: "/images/vehicles/lincolnnav1.webp",
+			car: "/images/vehicles/LincolnNavigator.webp",
+			seating: "/images/features/LincolnNavigator/LincolnNavigatorSeating.webp",
+			cooler: "/images/features/LincolnNavigator/LincolnNavigatorCooler.webp",
+			ceiling: "/images/features/LincolnNavigator/LincolnNavigatorCeiling.webp",
 		  },
 		  MercedesSprinterVan: {
-			car: "/images/vehicles/mercedessprinter3.webp",
+			car: "/images/vehicles/MercedesSprinterVan.webp",
+			seating: "/images/features/MercedesSprinterVan/MercedesSprinterVanSeating.webp",
+			cooler: "/images/features/MercedesSprinterVan/MercedesSprinterVanCooler.webp",
+			ceiling: "/images/features/MercedesSprinterVan/MercedesSprinterVanCeiling.webp",
+		  },
+		  MercedesSprinterExecutive: {
+			car: "/images/vehicles/MercedesSprinterExecutive.webp",
+		  },
+		  StretchLimo: {
+			car: "/images/vehicles/StretchLimo.webp",
+			seating: "/images/features/StretchLimo/StretchLimoSeating.webp",
+			cooler: "/images/features/StretchLimo/StretchLimoCooler.webp",
+			ceiling: "/images/features/StretchLimo/StretchLimoCeiling.webp",
 		  },
 		};
 

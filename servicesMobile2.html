@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Addison Limo Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #d3d3d3;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo {
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .menu {
+      position: fixed;
+      top: 60px;
+      left: 200%;
+      width: 80%;
+      height: calc(100vh - 60px);
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .menu.visible {
+      left: 20%;
+    }
+
+    .menu a {
+      text-decoration: none;
+      padding: 15px 10px;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    #services {
+      padding: 2rem 1rem;
+      background-color: #f8f9fa;
+    }
+
+    #services h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .services-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #007bff;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="logo.webp" alt="logo" class="header-logo">
+    </div>
+    <nav class="menu">
+      <a href="indexMobile.html">Home</a>
+      <a href="servicesMobile.html">Services</a>
+      <a href="fleetMobile.html">Fleet</a>
+      <a href="testimonialsMobile.html">Testimonials</a>
+      <a href="ratesMobile.html">Rates</a>
+      <a href="quotesMobile.html">Quote</a>
+    </nav>
+  </header>
+
+  <section id="services">
+    <h1>Our Services</h1>
+    <div class="services-section">
+      <div class="service-card">
+        <h3>Weddings</h3>
+        <p>Elegant transportation for the bride, groom, wedding party, and guests.</p>
+      </div>
+      <div class="service-card">
+        <h3>Prom Nights</h3>
+        <p>Safe and stylish transportation for prom attendees.</p>
+      </div>
+      <div class="service-card">
+        <h3>Sweet 16 Parties</h3>
+        <p>Make a milestone birthday extra memorable.</p>
+      </div>
+      <div class="service-card">
+        <h3>Quinceañeras</h3>
+        <p>Luxurious rides for a special cultural celebration.</p>
+      </div>
+      <div class="service-card">
+        <h3>Anniversaries</h3>
+        <p>Romantic transportation for couples celebrating milestones.</p>
+      </div>
+      <div class="service-card">
+        <h3>Valentine’s Day</h3>
+        <p>A special ride for a romantic evening.</p>
+      </div>
+      <div class="service-card">
+        <h3>Bachelor/Bachelorette Parties</h3>
+        <p>Party limos for a night out.</p>
+      </div>
+      <div class="service-card">
+        <h3>Graduations</h3>
+        <p>Celebrate academic achievements in style.</p>
+      </div>
+      <div class="service-card">
+        <h3>Date Nights</h3>
+        <p>Add a touch of luxury to an evening out.</p>
+      </div>
+      <div class="service-card">
+        <h3>Bar/Bat Mitzvahs</h3>
+        <p>Sophisticated transportation for religious milestones.</p>
+      </div>
+      <div class="service-card">
+        <h3>Retirement Parties</h3>
+        <p>Celebrate the end of a career with class.</p>
+      </div>
+      <div class="service-card">
+        <h3>Corporate Transportation</h3>
+        <p>Impress clients or executives with executive limo services.</p>
+      </div>
+      <div class="service-card">
+        <h3>Airport Transfers</h3>
+        <p>Reliable pickups and drop-offs to and from the airport.</p>
+      </div>
+      <div class="service-card">
+        <h3>Concerts and Festivals</h3>
+        <p>Safe and convenient rides for group outings.</p>
+      </div>
+      <div class="service-card">
+        <h3>Sporting Events</h3>
+        <p>Hassle-free transportation for fans or VIPs.</p>
+      </div>
+      <div class="service-card">
+        <h3>Night Out</h3>
+        <p>Party buses or limos for bar hopping or club nights.</p>
+      </div>
+      <div class="service-card">
+        <h3>Casino Trips</h3>
+        <p>Travel in luxury to casinos or gaming destinations.</p>
+      </div>
+      <div class="service-card">
+        <h3>Holiday Light Tours</h3>
+        <p>Enjoy holiday lights and decorations in comfort.</p>
+      </div>
+      <div class="service-card">
+        <h3>New Year’s Eve</h3>
+        <p>Celebrate the countdown safely and in style.</p>
+      </div>
+      <div class="service-card">
+        <h3>Thanksgiving Gatherings</h3>
+        <p>Transport family or guests with ease.</p>
+      </div>
+      <div class="service-card">
+        <h3>Halloween Parties</h3>
+        <p>Fun and spooky rides to events or haunted attractions.</p>
+      </div>
+      <div class="service-card">
+        <h3>City Tours</h3>
+        <p>Explore the city in a private, luxurious vehicle.</p>
+      </div>
+      <div class="service-card">
+        <h3>Funeral Transportation</h3>
+        <p>Professional and respectful service for families.</p>
+      </div>
+      <div class="service-card">
+        <h3>Shopping Trips</h3>
+        <p>Stress-free trips to malls or shopping centers.</p>
+      </div>
+      <div class="service-card">
+        <h3>Kids’ Parties</h3>
+        <p>Fun and safe transportation for group outings.</p>
+      </div>
+      <div class="service-card">
+        <h3>Proposal Rides</h3>
+        <p>Romantic transportation for popping the question.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
+  </footer>
+</body>
+</html>

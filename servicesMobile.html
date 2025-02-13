@@ -10,9 +10,29 @@
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
+	  /*background: linear-gradient(to bottom, #888, #555);*/ /* Elegant gradient background */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
       color: #333;
     }
 
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      
+    }
+
+    html, body {
+	  min-height: 100%; /* Ensure the page extends at least to the full viewport height */
+	  margin: 0;
+	  padding: 0;
+	}
+
+    * {
+      box-sizing: border-box; /* Include padding and borders in width calculations */
+    }
+
+	
     header {
       display: flex;
       justify-content: space-between;
@@ -22,29 +42,137 @@
       color: white;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 900;
     }
 
-    .header-left img {
-      max-height: 60px;
-    }
-
-    .menu {
+    .header-left {
+      flex: 1;
       display: flex;
-      gap: 20px;
+      align-items: center;
     }
 
-    .menu a {
-      text-decoration: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
+
+    .header-logo {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .hamburger {
+	  cursor: pointer;
+	  font-size: 24px;
+	  width: 24px;
+	  height: 24px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 7px;
+	  transition: color 0.3s ease-in-out; /* Smooth color transition */
+	}
+
+	.hamburger span {
+	  display: block;
+	  width: 35px;
+	  height: 3px;
+	  background-color: white;
+	  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+	}
+
+	.hamburger:hover span {
+	  background-color: #FFD700; /* Gold on hover */
+	}
+
+	.hamburger.active span {
+	  background-color: #FFD700; /* Gold when active */
+	}
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .call-button {
+      background-color: #e74c3c;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 10px; /* Space below hamburger */
+    }
+
+    .call-button svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .call-button:hover {
+      background-color: #c0392b;
+      cursor: pointer;
+    }
+
+	.menu {
+	  position: fixed;
+	  top: 60px;
+	  left: 200%;
+	  width: 80%;
+	  height: calc(100vh - 60px);
+	  background-color: #333; /* Dark gray background */
+	  display: flex;
+	  flex-direction: column;
+	  padding: 20px;
+	  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	  transition: left 0.3s ease-in-out;
+	  z-index: 1000;
+	  background: linear-gradient(to bottom, #333, #222); /* Dark gray gradient */
+	  border-left: 4px solid #FFD700; /* Gold border on the left */
+	}
+
+	.menu.visible {
+	  left: 20%;
+	}
+
+	.menu a {
+	  text-decoration: none;
+	  padding: 15px 10px;
+	  color: white;
+	  border-bottom: 1px solid #444; /* Slightly lighter gray border */
+	  font-size: 18px;
+	  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+	}
+
+	.menu a:hover {
+	  background-color: #444; /* Slightly lighter gray on hover */
+	  color: #FFD700; /* Gold text on hover */
+	}
+
+	.menu a:active {
+	  background-color: #555; /* Medium gray for active state */
+	  color: #FFD700; /* Gold text for active state */
+	}
 
     .menu a:hover {
-      background-color: #555;
+      background-color: #f1f1f1;
     }
+	
+	
 
     .hero {
       background: url('homebackground-ultrawide.jpg') no-repeat center center/cover;
@@ -126,18 +254,37 @@
 </head>
 <body>
   <header>
-    <div class="header-left">
-      <img src="logo.webp" alt="Addison Limo Services">
-    </div>
-    <nav class="menu">
-      <a href="indexMobile.html">Home</a>
-      <a href="servicesMobile.html">Services</a>
-      <a href="fleetMobile.html">Fleet</a>
-      <a href="testimonialsMobile.html">Testimonials</a>
-      <a href="ratesMobile.html">Rates</a>
-      <a href="quotesMobile.html">Quote</a>
-    </nav>
-  </header>
+	
+		<div class="header-left">
+		  <img src="logo.webp" alt="logo" class="header-logo">
+		</div>
+		
+		<div class="header-right">
+			<div class="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<a href="tel:+19726407128" class="call-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+					<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z" />
+				</svg>
+				(972) 640 7128
+			</a>
+		</div>
+		
+	</header>
+  
+	
+  
+	<nav class="menu">
+	  <a href="indexMobile.html">Home</a>
+	  <a href="servicesMobile.html">Services</a>
+	  <a href="fleetMobile.html">Fleet</a>
+	  <a href="testimonialsMobile.html">Testimonials</a>
+	  <a href="ratesMobile.html">Rates</a>
+	  <a href="quotesMobile.html">Quote</a>
+	</nav>
 
   <section class="hero">
     <h1>Our Services</h1>
@@ -212,6 +359,9 @@
       </ul>
     </section>
   </main>
+  
+  <script src="hamburgermenu.js"></script>
+  
 
   <footer>
     <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>

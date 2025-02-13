@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #d3d3d3; /* Gray background to test transparency */
+      /*background-color: #d3d3d3; Gray background to test transparency */
       overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
@@ -56,25 +56,33 @@
     }
 
     .hamburger {
-      cursor: pointer;
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 7px;
-    }
+	  cursor: pointer;
+	  font-size: 24px;
+	  width: 24px;
+	  height: 24px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 7px;
+	  transition: color 0.3s ease-in-out; /* Smooth color transition */
+	}
 
-    .hamburger span {
-      display: block;
-      width: 35px;
-      height: 3px;
-      background-color: white;
-      transition: transform 0.3s, opacity 0.3s;
-    }
+	.hamburger span {
+	  display: block;
+	  width: 35px;
+	  height: 3px;
+	  background-color: white;
+	  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+	}
 
+	.hamburger:hover span {
+	  background-color: #FFD700; /* Gold on hover */
+	}
+
+	.hamburger.active span {
+	  background-color: #FFD700; /* Gold when active */
+	}
     .hamburger.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
     }
@@ -112,36 +120,47 @@
       cursor: pointer;
     }
 
-    .menu {
-      position: fixed;
-      top: 60px;
-      left: 200%;
-      width: 80%;
-      height: calc(100vh - 60px);
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      transition: left 0.3s ease-in-out;
-      z-index: 1000;
-    }
+	.menu {
+	  position: fixed;
+	  top: 60px;
+	  left: 200%;
+	  width: 80%;
+	  height: calc(100vh - 60px);
+	  background-color: #333; /* Dark gray background */
+	  display: flex;
+	  flex-direction: column;
+	  padding: 20px;
+	  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	  transition: left 0.3s ease-in-out;
+	  z-index: 1000;
+	  background: linear-gradient(to bottom, #333, #222); /* Dark gray gradient */
+	  border-left: 4px solid #FFD700; /* Gold border on the left */
+	}
 
-    .menu.visible {
-      left: 20%;
-    }
+	.menu.visible {
+	  left: 20%;
+	}
 
-    .menu a {
-      text-decoration: none;
-      padding: 15px 10px;
-      color: #333;
-      border-bottom: 1px solid #ddd;
-      font-size: 18px;
-    }
+	.menu a {
+	  text-decoration: none;
+	  padding: 15px 10px;
+	  color: white;
+	  border-bottom: 1px solid #444; /* Slightly lighter gray border */
+	  font-size: 18px;
+	  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+	}
 
-    .menu a:hover {
-      background-color: #f1f1f1;
-    }
+	.menu a:hover {
+	  background-color: #444; /* Slightly lighter gray on hover */
+	  color: #FFD700; /* Gold text on hover */
+	}
+
+	.menu a:active {
+	  background-color: #555; /* Medium gray for active state */
+	  color: #FFD700; /* Gold text for active state */
+	}
+
+
 
     #hero {
       color: white;
@@ -225,14 +244,14 @@
     }
 
     #fleet {
-      padding: 2rem;
+      
       text-align: center;
     }
 
     .fleet-container {
       display: grid;
       gap: 1.5rem;
-      padding: 1rem;
+      padding: .1rem;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 	
@@ -240,11 +259,11 @@
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
-	  padding: 0 20px; /* Adjust as needed */
+	  
 	}
 
     .fleet-item {
-      background-color: gray;
+      background-color: white;
       border-radius: 10px;
       overflow: hidden;
       text-align: center;
@@ -261,10 +280,11 @@
 
     .fleet-item img {
       width: 100%;
-      max-width: 300px;
-      aspect-ratio: 16 / 9;
+      max-width: 500px;
+      /*aspect-ratio: 16 / 9;*/
       border-bottom: 2px solid #ddd;
       display: block;
+	  background-color: #F6F6F6;
     }
 
     .fleet-item h3 {
@@ -427,6 +447,15 @@
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		z-index: 10000;
 	}
+	
+	.click-label {
+	  display: block;
+	  text-align: center;
+	  margin-top: 10px;
+	  font-size: 14px;
+	  color: #FFD700; /* Gold color to match your theme */
+	  font-weight: bold;
+	}
 
 
     footer {
@@ -504,33 +533,45 @@
 		<div class="fleet-container">
 			<a href="/fleetMobile.html#LincolnNavigator" class="fleet-item">
 			<img src="./images/main/LincolnNavigatorMain.png" alt="Lincoln Navigator">
-			<h3>Lincoln Navigator</h3>
-			<p>Seats up to 8 passengers</p>
+			<h3>Luxury SUV</h3>
+			<p>8 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		  <a href="/fleetMobile.html#MercedesSprinterVan" class="fleet-item">
 			<img src="./images/main/MercedesSprinterVanMain.png" alt="Mercedes Sprinter Van">
-			<h3>Mercedes Sprinter Van</h3>
-			<p>Seats up to 14 passengers</p>
+			<h3>Sprinter Shuttle Van</h3>
+			<p>14 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		  <a href="/fleetMobile.html#ExecutiveSprinterVan" class="fleet-item">
 			<img src="./images/main/ExecutiveSprinterVanMain.png" alt="Executive Sprinter Van">
-			<h3>Executive Sprinter Van</h3>
-			<p>Seats up to 8 passengers</p>
+			<h3>Sprinter Executive</h3>
+			<p>8 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		  <a href="/fleetMobile.html#SprinterLimo" class="fleet-item">
 			<img src="./images/main/SprinterLimoMain.png" alt="Sprinter Limo">
 			<h3>Sprinter Limo</h3>
-			<p>Seats 10-12 passengers</p>
+			<p>10-12 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		  <a href="/fleetMobile.html#Hummer" class="fleet-item">
 			<img src="./images/main/HummerMain.png" alt="Hummer">
-			<h3>Hummer</h3>
-			<p>Seats 14-18 passengers</p>
+			<h3>H2 Hummer Limo</h3>
+			<p>14-18 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		  <a href="/fleetMobile.html#StretchLimo" class="fleet-item">
 			<img src="./images/main/StretchLimoMain.png" alt="Stretch Limo">
-			<h3>Stretch Limo</h3>
-			<p>Seats 8-10 passengers</p>
+			<h3>Chrysler 300 Stretch Limo</h3>
+			<p>8-10 &#128101;</p>
+			<span class="click-label">Tap for More</span> <!-- Always visible -->
+			<br>
 		  </a>
 		</div>
 	</div>

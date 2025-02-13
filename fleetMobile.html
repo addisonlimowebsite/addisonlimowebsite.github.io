@@ -5,23 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fleet - Addison Limo Services</title>
   <style>
-  
-	
-	
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #888, #555); /* Elegant gradient background */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     html, body {
 	  min-height: 100%; /* Ensure the page extends at least to the full viewport height */
-	  min-width: 100%;
 	  margin: 0;
 	  padding: 0;
 	}
 
+    * {
+      box-sizing: border-box; /* Include padding and borders in width calculations */
+    }
+
+	
     header {
       display: flex;
       justify-content: space-between;
@@ -33,19 +36,19 @@
       top: 0;
       z-index: 900;
     }
-	
-	.header-left {
-		  flex: 1;
-		  display: flex;
-		  align-items: center; /* Vertically align logo */
-		}
-		
-	.header-right {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: flex-end;
-	}
-	
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
     .header-logo {
       height: 100%;
       max-height: 60px;
@@ -53,25 +56,33 @@
     }
 
     .hamburger {
-      cursor: pointer;
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 7px;
-    }
+	  cursor: pointer;
+	  font-size: 24px;
+	  width: 24px;
+	  height: 24px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 7px;
+	  transition: color 0.3s ease-in-out; /* Smooth color transition */
+	}
 
-    .hamburger span {
-      display: block;
-      width: 35px;
-      height: 3px;
-      background-color: white;
-      transition: transform 0.3s, opacity 0.3s;
-    }
+	.hamburger span {
+	  display: block;
+	  width: 35px;
+	  height: 3px;
+	  background-color: white;
+	  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+	}
 
+	.hamburger:hover span {
+	  background-color: #FFD700; /* Gold on hover */
+	}
+
+	.hamburger.active span {
+	  background-color: #FFD700; /* Gold when active */
+	}
     .hamburger.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
     }
@@ -96,7 +107,7 @@
       align-items: center;
       gap: 0.5rem;
       justify-content: center;
-      margin-top: 10px;
+      margin-top: 10px; /* Space below hamburger */
     }
 
     .call-button svg {
@@ -109,42 +120,101 @@
       cursor: pointer;
     }
 
-    .menu {
-      position: fixed;
-      top: 60px;
-      left: 200%;
-      width: 80%;
-      height: calc(100vh - 60px);
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      transition: left 0.3s ease-in-out;
-      z-index: 1000;
-    }
+	.menu {
+	  position: fixed;
+	  top: 60px;
+	  left: 200%;
+	  width: 80%;
+	  height: calc(100vh - 60px);
+	  background-color: #333; /* Dark gray background */
+	  display: flex;
+	  flex-direction: column;
+	  padding: 20px;
+	  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	  transition: left 0.3s ease-in-out;
+	  z-index: 1000;
+	  background: linear-gradient(to bottom, #333, #222); /* Dark gray gradient */
+	  border-left: 4px solid #FFD700; /* Gold border on the left */
+	}
 
-    .menu.visible {
-      left: 20%;
-    }
+	.menu.visible {
+	  left: 20%;
+	}
 
-    .menu a {
-      text-decoration: none;
-      padding: 15px 10px;
-      color: #333;
-      border-bottom: 1px solid #ddd;
-      font-size: 18px;
-    }
+	.menu a {
+	  text-decoration: none;
+	  padding: 15px 10px;
+	  color: white;
+	  border-bottom: 1px solid #444; /* Slightly lighter gray border */
+	  font-size: 18px;
+	  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+	}
+
+	.menu a:hover {
+	  background-color: #444; /* Slightly lighter gray on hover */
+	  color: #FFD700; /* Gold text on hover */
+	}
+
+	.menu a:active {
+	  background-color: #555; /* Medium gray for active state */
+	  color: #FFD700; /* Gold text for active state */
+	}
 
     .menu a:hover {
       background-color: #f1f1f1;
     }
+	
+	
 
-    #fleet {
-      padding: 2rem 1rem;
-      background-color: transparent;
-      text-align: center;
-    }
+    /* Hero Section - Fleet */
+	#fleet {
+	  padding: 6rem 1rem; /* Increased padding for more space */
+	  text-align: center;
+	  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-fleet.jpg'); /* Add a background image */
+	  background-size: cover;
+	  background-position: center;
+	  color: white; /* White text for contrast */
+	  position: relative;
+	  overflow: hidden;
+	}
+
+	#fleet h2 {
+	  font-size: 3rem; /* Larger font size for the heading */
+	  font-weight: bold;
+	  margin-bottom: 1rem;
+	  text-transform: uppercase; /* Uppercase for a bold look */
+	  letter-spacing: 2px; /* Spacing between letters */
+	  animation: fadeInDown 1s ease-in-out; /* Add a subtle animation */
+	}
+
+	#fleet p {
+	  font-size: 1.25rem; /* Slightly larger paragraph text */
+	  margin-bottom: 2rem;
+	  animation: fadeInUp 1s ease-in-out; /* Add a subtle animation */
+	}
+
+	/* Animations for the hero section */
+	@keyframes fadeInDown {
+	  from {
+		opacity: 0;
+		transform: translateY(-20px);
+	  }
+	  to {
+		opacity: 1;
+		transform: translateY(0);
+	  }
+	}
+
+	@keyframes fadeInUp {
+	  from {
+		opacity: 0;
+		transform: translateY(20px);
+	  }
+	  to {
+		opacity: 1;
+		transform: translateY(0);
+	  }
+	}
 
     .fleet-container {
 	  display: grid;
@@ -321,13 +391,14 @@
 	  <a href="quotesMobile.html">Quote</a>
 	</nav>
 
-  <section id="fleet">
-  <h2>Our Fleet</h2>
-  <p>Select a vehicle below to view its full gallery!</p>
+	<section id="fleet">
+	  <h2>Our Fleet</h2>
+	  <p>Explore our luxurious vehicles and click/tap on one to view its full gallery!</p>
+	</section>
   <div class="fleet-container">
-	<div id="HummerLimo" class="fleet-item">
+	<div id="Hummer" class="fleet-item">
 	  <!-- Main Image -->
-	  <img id="Hummer-main-image" src="/images/vehicles/Hummer.webp" alt="Hummer Limo" onclick="openGallery(0)">
+	  <img id="Hummer-main-image" src="/images/vehicles/sorted/hummer/Hummer1.webp" alt="Hummer Limo" onclick="openGallery(0)">
 	  <h3>H2 Hummer Limo</h3>
 	  
 
@@ -347,9 +418,9 @@
 	  
 	</div>
 	
-    <div id="LincolnNavigator" class="fleet-item" onclick="openGallery(1)">
+    <div id="suv" class="fleet-item" onclick="openGallery(1)">
       
-	  <img id="LincolnNavigator-main-image" src="/images/vehicles/LincolnNavigator.webp" alt="LincolnNavigator Limo" onclick="openGallery(1)">
+	  <img id="suv-main-image" src="/images/vehicles/sorted/suv/suv1.webp" alt="LincolnNavigator Limo" onclick="openGallery(1)">
       <h3>Luxury SUV</h3>
       
 	  <!-- Feature Selector -->
@@ -368,7 +439,7 @@
     </div>
 	
     <div id="StretchLimo" class="fleet-item" onclick="openGallery(2)">
-      <img id="StretchLimo-main-image" src="/images/vehicles/StretchLimo.webp" alt="Stretch Limo" onclick="openGallery(2)">
+      <img id="StretchLimo-main-image" src="/images/vehicles/sorted/stretch/stretch1.webp" alt="Stretch Limo" onclick="openGallery(2)">
       <h3>Chrysler 300 Stretch Limo</h3>
       
 	  <!-- Feature Selector -->
@@ -389,7 +460,7 @@
     </div>
 	
 	<div id="MercedesSprinterVan" class="fleet-item" onclick="openGallery(3)">
-	  <img id="MercedesSprinterVan-main-image" src="/images/vehicles/MercedesSprinterVan.webp" alt="Sprinter Van" onclick="openGallery(3)">
+	  <img id="MercedesSprinterVan-main-image" src="/images/vehicles/sorted/sprinterVan/sprinterVan1.webp" alt="Sprinter Van" onclick="openGallery(3)">
       <h3>Sprinter Shuttle Van</h3>
       
 	  <!-- Feature Selector -->
@@ -410,17 +481,17 @@
     </div>
 	
 	<div id="MercedesSprinterExecutive" class="fleet-item" onclick="openGallery(4)">
-	  <img id="MercedesSprinterExecutive-main-image" src="/images/vehicles/MercedesSprinterExecutive.webp" alt="Sprinter Executive" onclick="openGallery(4)">
+	  <img id="MercedesSprinterExecutive-main-image" src="/images/vehicles/sorted/sprinterExecutive/sprinterExecutive1.webp" alt="Sprinter Executive" onclick="openGallery(4)">
       <h3>Sprinter Executive</h3>
       
 	  <!-- Feature Selector -->
 	  <div class="feature-selector">
 		<h4>Features</h4>
 		<ul>
-		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'car')">Mercedes Sprinter Executive</li>
-		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'seating')">360 Swivel & Reclining Leather Seating</li>
-		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'tables')">Wood Tables & Suede Hardwood Flooring</li>
-		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'tv')">110V Power Outlets & USB Power Plugs & LED HDTV</li>
+		  <li>Mercedes Sprinter Executive</li>
+		  <li>360 Swivel & Reclining Leather Seating</li>
+		  <li>Wood Tables & Suede Hardwood Flooring</li>
+		  <li>110V Power Outlets & USB Power Plugs & LED HDTV</li>
 		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'speakers')">High Performance Surround Sound & Climate Controls</li>
 		</ul>
 	  </div>
@@ -431,7 +502,7 @@
     </div>
 	
 	<div id="MercedesSprinterLimo" class="fleet-item" onclick="openGallery(5)">
-	  <img id="MercedesSprinterLimo-main-image" src="/images/vehicles/MercedesSprinterLimo.webp" alt="Sprinter Limo" onclick="openGallery(5)">
+	  <img id="MercedesSprinterLimo-main-image" src="/images/vehicles/sorted/sprinterLimo/sprinterLimo1.webp" alt="Sprinter Limo" onclick="openGallery(5)">
 
       <h3>Sprinter Limo</h3>
       
@@ -470,17 +541,20 @@
   <script src="hamburgermenu.js"></script>
   <script>
 	/* images to show by default (not just the features) */
+	
     const imageGalleries = [
 	/* 0 Hummer */
-	["/images/vehicles/Hummer.webp", "/images/vehicles/Hummer2.webp", "/images/Hummer3.webp"],
+	["/images/vehicles/sorted/hummer/hummer1.webp", "/images/vehicles/sorted/hummer/hummer2.webp", "/images/vehicles/sorted/hummer/hummer3.webp","/images/vehicles/sorted/hummer/hummer4.webp","/images/vehicles/sorted/hummer/hummer5.webp"],
 	/* 1 LincolnNavigator */
-	["/images/vehicles/LincolnNavigator.webp", "/images/vehicles/LincolnNavigator2.webp", "/images/vehicles/LincolnNavigator3.webp"],
+	["/images/vehicles/sorted/suv/suv1.webp","/images/vehicles/sorted/suv/suv2.webp","/images/vehicles/sorted/suv/suv3.webp"],
 	/* 2 StretchLimo */
-	["/images/vehicles/StretchLimo.webp", "/images/vehicles/StretchLimo2.webp", "/images/vehicles/StretchLimo3.webp"],
+	["/images/vehicles/sorted/stretch/stretch1.webp", "/images/vehicles/sorted/stretch/stretch2.webp", "/images/vehicles/sorted/stretch/stretch3.webp"],
 	/* 3 Mercedes Sprinter Van */
-	["/images/vehicles/MercedesSprinterVan.webp", "/images/vehicles/MercedesSprinterVan2.webp", "/images/vehicles/MercedesSprinterVan3.webp"],
+	["/images/vehicles/sorted/sprinterVan/sprinterVan1.webp", "/images/vehicles/sorted/sprinterVan/sprinterVan2.webp", "/images/vehicles/sorted/sprinterVan/sprinterVan3.webp","/images/vehicles/sorted/sprinterVan/sprinterVan4.webp"],
 	/* 4 Mercedes Sprinter Executive */
-	["/images/vehicles/MercedesSprinterExecutive.webp", "/images/vehicles/MercedesSprinterVan2.webp", "/images/vehicles/MercedesSprinterVan3.webp"],
+	["/images/vehicles/sorted/sprinterExecutive/sprinterExecutive1.webp", "/images/vehicles/sorted/sprinterExecutive/sprinterExecutive2.webp", "/images/vehicles/sorted/sprinterExecutive/sprinterExecutive3.webp", "/images/vehicles/sorted/sprinterExecutive/sprinterExecutive4.webp"],
+	/* 5 Mercedes Sprinter Limo */
+	["/images/vehicles/sorted/sprinterLimo/sprinterLimo1.webp", "/images/vehicles/sorted/sprinterLimo/sprinterLimo2.webp", "/images/vehicles/sorted/sprinterLimo/sprinterLimo3.webp", "/images/vehicles/sorted/sprinterLimo/sprinterLimo4.webp","/images/vehicles/sorted/sprinterLimo/sprinterLimo5.webp"]
 	];
 
     let startX, startY;
@@ -520,48 +594,6 @@
     });
   </script>
   
-  <script>
-		
-		/* Features go here (the list for stuff like cars; clicked on to replace original image) */
-	  const featureImages = {
-		  Hummer: {
-			car: "/images/vehicles/Hummer.webp",
-			seating: "/images/features/Hummer/HummerSeating.webp",
-			cooler: "/images/features/Hummer/HummerCooler.webp",
-			ceiling: "/images/features/Hummer/HummerCeiling.webp",
-		  },
-		  LincolnNavigator: {
-			car: "/images/vehicles/LincolnNavigator.webp",
-			seating: "/images/features/LincolnNavigator/LincolnNavigatorSeating.webp",
-			cooler: "/images/features/LincolnNavigator/LincolnNavigatorCooler.webp",
-			ceiling: "/images/features/LincolnNavigator/LincolnNavigatorCeiling.webp",
-		  },
-		  MercedesSprinterVan: {
-			car: "/images/vehicles/MercedesSprinterVan.webp",
-			seating: "/images/features/MercedesSprinterVan/MercedesSprinterVanSeating.webp",
-			cooler: "/images/features/MercedesSprinterVan/MercedesSprinterVanCooler.webp",
-			ceiling: "/images/features/MercedesSprinterVan/MercedesSprinterVanCeiling.webp",
-		  },
-		  MercedesSprinterExecutive: {
-			car: "/images/vehicles/MercedesSprinterExecutive.webp",
-		  },
-		  StretchLimo: {
-			car: "/images/vehicles/StretchLimo.webp",
-			seating: "/images/features/StretchLimo/StretchLimoSeating.webp",
-			cooler: "/images/features/StretchLimo/StretchLimoCooler.webp",
-			ceiling: "/images/features/StretchLimo/StretchLimoCeiling.webp",
-		  },
-		};
-
-	  function showFeature(event, vehicle, feature) {
-		  event.stopPropagation(); // Prevent gallery opening
-		  const featureImage = featureImages[vehicle]?.[feature];
-		  const mainImage = document.getElementById(`${vehicle}-main-image`);
-
-		  if (featureImage) {
-			mainImage.src = featureImage; // Replace the main image
-		  }
-	  }
-	</script>
+  
 </body>
 </html>

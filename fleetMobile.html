@@ -168,14 +168,15 @@
 
     /* Hero Section - Fleet */
 	#fleet {
-	  padding: 6rem 1rem; /* Increased padding for more space */
+	  padding: 1rem 1rem; /* Increased padding for more space */
 	  text-align: center;
-	  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-fleet.jpg'); /* Add a background image */
+	  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/aboutusfivelimos.png'); /* Add a background image */
 	  background-size: cover;
 	  background-position: center;
-	  color: white; /* White text for contrast */
+	  color: lightblue;
 	  position: relative;
 	  overflow: hidden;
+	  font-family: impact, sans-serif;
 	}
 
 	#fleet h2 {
@@ -185,8 +186,15 @@
 	  text-transform: uppercase; /* Uppercase for a bold look */
 	  letter-spacing: 2px; /* Spacing between letters */
 	  animation: fadeInDown 1s ease-in-out; /* Add a subtle animation */
+	  font-family: verdana, sans-serif;
 	}
-
+	
+	#fleet h3 {
+		margin: 0;
+		padding: 0;
+		line-height: 1; /* Ensures tight spacing */
+	}
+	
 	#fleet p {
 	  font-size: 1.25rem; /* Slightly larger paragraph text */
 	  margin-bottom: 2rem;
@@ -240,6 +248,8 @@
 	  flex-direction: column; /* Stack content vertically */
 	  align-items: center; /* Center items horizontally */
 	  justify-content: center; /* Center items vertically */
+	  padding: 0;
+	  margin: 0;
 	}
 
 	.fleet-item img {
@@ -247,7 +257,7 @@
 	  height: auto; /* Maintain aspect ratio */
 	  object-fit: contain;
 	  background-color: #333333;
-	  margin-bottom: 1rem; /* Add space between the image and the heading/button */
+	  
 	}
 
     .fleet-item:hover {
@@ -355,6 +365,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+	
+	.feature-selector h4 {
+	  margin-top: 0;
+	  margin-bottom: 0.5rem; /* Optional: Reduces space below "Features" heading */
+	}
   </style>
 </head>
 <body>
@@ -396,12 +411,12 @@
 	  <p>Explore our luxurious vehicles and click/tap on one to view its full gallery!</p>
 	</section>
   <div class="fleet-container">
+	<section id="hummerAnchor"></section>
 	<div id="Hummer" class="fleet-item">
 	  <!-- Main Image -->
 	  <img id="Hummer-main-image" src="/images/vehicles/sorted/hummer/hummer1.webp" alt="Hummer Limo" onclick="openGallery(0)">
 	  <h3>H2 Hummer Limo</h3>
 	  
-
 	  <!-- Feature Selector -->
 	  <div class="feature-selector">
 		<h4>Features</h4>
@@ -410,6 +425,7 @@
 		  <li>Luxury Leather Seating</li>
 		  <li>Large Drink Cooler Bins</li>
 		  <li>Controllable Strobe Lighted Ceiling</li>
+		  <li>14-18 passengers</li>
 		</ul>
 	  </div>
 	  
@@ -428,8 +444,8 @@
 		<h4>Features</h4>
 		<ul>
 		  <li>Lincoln Navigator</li>
-		  <li>6 Passenger Seating</li>
 		  <li>Panaromic Sunroof Ceiling</li>
+		  <li>6 Passenger Seating</li>
 		</ul>
 	  </div>
 	  
@@ -439,6 +455,7 @@
     </div>
 	
     <div id="StretchLimo" class="fleet-item" onclick="openGallery(2)">
+	  <section id="StretchLimoAnchor"></section>
       <img id="StretchLimo-main-image" src="/images/vehicles/sorted/stretch/stretch1.webp" alt="Stretch Limo" onclick="openGallery(2)">
       <h3>Chrysler 300 Stretch Limo</h3>
       
@@ -451,6 +468,7 @@
 		  <li>Large Drink Cooler Bins</li>
 		  <li>Full Sized Bar with Fiber Optic & LED Lighting</li>
 		  <li>1000 Watt Surround Sound with Audio System</li>
+		  <li>8-10 passengers</li>
 		</ul>
 	  </div>
 	  
@@ -460,6 +478,7 @@
     </div>
 	
 	<div id="MercedesSprinterVan" class="fleet-item" onclick="openGallery(3)">
+	  <section id="sprinterVanAnchor"></section>
 	  <img id="MercedesSprinterVan-main-image" src="/images/vehicles/sorted/sprinterVan/sprinterVan1.webp" alt="Sprinter Van" onclick="openGallery(3)">
       <h3>Sprinter Shuttle Van</h3>
       
@@ -472,6 +491,7 @@
 		  <li>Beverage Cooler Bins</li>
 		  <li>LED Lit Ceiling</li>
 		  <li>High Performance Surround Sound & Climate Controls</li>
+		  <li>14 passengers</li>
 		</ul>
 	  </div>
 	  
@@ -481,6 +501,7 @@
     </div>
 	
 	<div id="MercedesSprinterExecutive" class="fleet-item" onclick="openGallery(4)">
+	  <section id="sprinterExecutiveAnchor"></section>
 	  <img id="MercedesSprinterExecutive-main-image" src="/images/vehicles/sorted/sprinterExecutive/sprinterExecutive1.webp" alt="Sprinter Executive" onclick="openGallery(4)">
       <h3>Sprinter Executive</h3>
       
@@ -492,7 +513,8 @@
 		  <li>360 Swivel & Reclining Leather Seating</li>
 		  <li>Wood Tables & Suede Hardwood Flooring</li>
 		  <li>110V Power Outlets & USB Power Plugs & LED HDTV</li>
-		  <li onclick="showFeature(event, 'MercedesSprinterExecutive', 'speakers')">High Performance Surround Sound & Climate Controls</li>
+		  <li>High Performance Surround Sound & Climate Controls</li>
+		  <li>8 passengers</li>
 		</ul>
 	  </div>
 	  
@@ -502,6 +524,7 @@
     </div>
 	
 	<div id="MercedesSprinterLimo" class="fleet-item" onclick="openGallery(5)">
+	  <section id="sprinterLimoAnchor"></section>
 	  <img id="MercedesSprinterLimo-main-image" src="/images/vehicles/sorted/sprinterLimo/sprinterLimo1.webp" alt="Sprinter Limo" onclick="openGallery(5)">
 
       <h3>Sprinter Limo</h3>
@@ -516,6 +539,7 @@
 		  <li>2 Large LCD TV Monitors</li>
 		  <li>Mobile Theater Surround Sound System</li>
 		  <li>Custom-built Large Bar Cooler & Fiber Optic light</li>
+		  <li>10-12 passengers</li>
 		</ul>
 	  </div>
 	  

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Addison Limo Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #d3d3d3; /* Gray background to test transparency */
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+	  color: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      
+    }
+
+    html, body {
+	  min-height: 100%; /* Ensure the page extends at least to the full viewport height */
+	  margin: 0;
+	  padding: 0;
+	}
+
+    * {
+      box-sizing: border-box; /* Include padding and borders in width calculations */
+    }
+
+	
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .header-logo {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .hamburger {
+	  cursor: pointer;
+	  font-size: 24px;
+	  width: 24px;
+	  height: 24px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 7px;
+	  transition: color 0.3s ease-in-out; /* Smooth color transition */
+	}
+
+	.hamburger span {
+	  display: block;
+	  width: 35px;
+	  height: 3px;
+	  background-color: white;
+	  transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+	}
+
+	.hamburger:hover span {
+	  background-color: #FFD700; /* Gold on hover */
+	}
+
+	.hamburger.active span {
+	  background-color: #FFD700; /* Gold when active */
+	}
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .call-button {
+      background-color: #e74c3c;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 10px; /* Space below hamburger */
+    }
+
+    .call-button svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .call-button:hover {
+      background-color: #c0392b;
+      cursor: pointer;
+    }
+
+	.menu {
+	  position: fixed;
+	  top: 60px;
+	  left: 200%;
+	  width: 80%;
+	  height: calc(100vh - 60px);
+	  background-color: #333; /* Dark gray background */
+	  display: flex;
+	  flex-direction: column;
+	  padding: 20px;
+	  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	  transition: left 0.3s ease-in-out;
+	  z-index: 1000;
+	  background: linear-gradient(to bottom, #333, #222); /* Dark gray gradient */
+	  border-left: 4px solid #FFD700; /* Gold border on the left */
+	}
+
+	.menu.visible {
+	  left: 20%;
+	}
+
+	.menu a {
+	  text-decoration: none;
+	  padding: 15px 10px;
+	  color: white;
+	  border-bottom: 1px solid #444; /* Slightly lighter gray border */
+	  font-size: 18px;
+	  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+	}
+
+	.menu a:hover {
+	  background-color: #444; /* Slightly lighter gray on hover */
+	  color: #FFD700; /* Gold text on hover */
+	}
+
+	.menu a:active {
+	  background-color: #555; /* Medium gray for active state */
+	  color: #FFD700; /* Gold text for active state */
+	}
+
+    .menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url('placeholder-hero.jpg') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 2rem;
+      color: #444;
+    }
+
+    
+
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+    }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+	
+	    .blog-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-post {
+      margin-bottom: 20px;
+	  margin-left: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .blog-post h2 {
+      color: #444;
+    }
+
+    .blog-post .date {
+      color: #777;
+      font-size: 0.9em;
+    }
+	
+	h2 {
+	font-family: impact, sans-serif;
+	}
+	
+	h3 {
+	font-family: verdana, sans-serif;
+	}
+	
+  </style>
+</head>
+<body>
+  <header>
+	
+		<div class="header-left">
+		  <img src="logo.webp" alt="logo" class="header-logo">
+		</div>
+		
+		<div class="header-right">
+			<div class="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<a href="tel:+19726407128" class="call-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+					<path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.22 11.72 11.72 0 003.69.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.58 3.69 1 1 0 01-.22 1.11l-2.2 2.2z" />
+				</svg>
+				(972) 640 7128
+			</a>
+		</div>
+		
+	</header>
+  
+	<nav class="menu">
+	  <a href="indexMobile.html">Home</a>
+	  <a href="servicesMobile.html">Services</a>
+	  <a href="fleetMobile.html">Fleet</a>
+	  <a href="testimonialsMobile.html">Testimonials</a>
+	  <a href="ratesMobile.html">Rates</a>
+	  <a href="quotesMobile.html">Quote</a>
+	</nav>
+
+	  <section class="hero">
+	  <h1>Latest Blog Posts</h1>
+	</section>
+
+	<div class="blog-container" id="blog-container">
+	  <p>Loading blog posts...</p>
+	</div>
+
+  
+  <script>
+  
+	document.addEventListener("DOMContentLoaded", function () {
+		fetch("blog-posts.json")
+			.then(response => response.json())
+			.then(posts => {
+				const blogContainer = document.getElementById("blog-container");
+				blogContainer.innerHTML = ""; // Clear the loading text
+
+				if (posts.length === 0) {
+					blogContainer.innerHTML = "<p>No blog posts available.</p>";
+					return;
+				}
+
+				posts.forEach(post => {
+					const postElement = document.createElement("div");
+					postElement.classList.add("blog-post");
+
+					postElement.innerHTML = `
+						<h2>${post.title}</h2>
+						<p class="date">${post.date}</p>
+						<p>${post.content}</p>
+					`;
+
+					blogContainer.appendChild(postElement);
+				});
+			})
+			.catch(error => {
+				document.getElementById("blog-container").innerHTML = "<p>Error loading blog posts.</p>";
+				console.error("Error fetching blog posts:", error);
+			});
+	});
+
+  </script>
+	
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+
+    const closeMenu = () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('visible');
+    };
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('visible');
+    });
+
+    document.body.addEventListener('click', closeMenu);
+    menu.addEventListener('click', closeMenu);
+  </script>
+  
+  
+  <footer>
+    <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
+  </footer>
+</body>
+</html>

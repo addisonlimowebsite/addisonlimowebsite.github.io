@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Welcome to the Blog!",
+    "date": "February 25, 2025",
+    "content": "This is the first blog post. It is being read dynamically from a JSON file."
+  },
+  {
+    "title": "How Our Limo Service Works",
+    "date": "March 1, 2025",
+    "content": "We provide top-tier limo services in Addison, TX. Our fleet includes luxury sedans, SUVs, and stretch limousines."
+  },
+  {
+    "title": "5 Tips for Choosing a Limo Service",
+    "date": "March 5, 2025",
+    "content": "Looking for the best limo service? Consider factors like pricing, availability, reviews, vehicle types, and customer support."
+  },
+  {
+    "title": "REPLACE THIS WITH THE TITLE",
+    "date": "DATE GOES HERE",
+    "content": "WRITE SOMETHING NEATO OVER HERE."
+  }
+  
+]

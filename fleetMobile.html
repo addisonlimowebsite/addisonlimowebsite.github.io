@@ -572,6 +572,14 @@
   </div>
 
   <footer>
+	  <div id="footer-container"></div>
+		<script>
+		  fetch("footer.html")
+			.then(response => response.text())
+			.then(data => {
+			  document.getElementById("footer-container").innerHTML = data;
+			});
+		</script>
     <p>&copy; 2024 Addison Limo Services and Moabtech. All rights reserved.</p>
   </footer>
 
